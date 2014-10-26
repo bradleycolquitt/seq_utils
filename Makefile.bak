@@ -1,0 +1,12 @@
+default: all
+
+all: release
+
+release:
+	$(MAKE) -C bin
+
+
+clean:
+	$(MAKE) -C bin clean
+
+.PHONY: default all debug release clean

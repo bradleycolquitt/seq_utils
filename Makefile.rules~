@@ -1,0 +1,18 @@
+CXX=g++
+SRC=../src
+#CXXFLAGS+=-I/usr/local/seqan/core/include
+#CXXFLAGS+=-I/usr/local/seqan/extras/include
+#CXXFLAGS+=-I/usr/include
+CXXFLAGS+=-W -Wall -Wno-long-long -pedantic -Wno-variadic-macros
+#LDFLAGS+=-lrt
+LDFLAGS+=-lz
+LDFLAGS+=-lboost_iostreams
+all: seq_lengths
+
+#seq_lengths: seq_lengths.o ; $(CXX) $(LDFLAGS) -o seq_lengths seq_lengths.o
+
+seq_lengths: $(SRC)/seq_lengths.cpp ; $(CXX) $(CXXFLAGS) $(SRC)/seq_lengths.cpp -o seq_lengths $(LDFLAGS)
+
+clean: ; rm -f seq_lengths.o seq_lengths
+
+.PHONY: default all clean
